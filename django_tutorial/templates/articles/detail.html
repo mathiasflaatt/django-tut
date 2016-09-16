@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head_title %}
+{{ instance.title }} | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1>{{ title }}</h1><small>{% if instance.draft %}<font style="color: red">Draft</font> - {% endif %}{{ instance.timestamp }}</small>
+    {% if instance.user.get_full_name %}
+    <p>Author: {{ instance.user.get_full_name}}</p>
+    {% endif %}
+
+    {% if instance.image %}
+         <img src="{{ instance.image.url }}" class="img-responsive"/>
+    {% endif %}
+    <hr>
+        {{ instance.content }}<br>
+
+
+</div>
+{% endblock content %}
